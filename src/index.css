@@ -1,13 +1,28 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap');
+
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  border: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Oxygen', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  min-height: 100%;
+  font-size: 14px;
+  color: #444;
 }
+
+
+@media only screen and (min-width: 1000px) {
+  html {
+    display:flex; justify-content:center;
+  }
+  body {
+    width: 80%;
+  }
+}
+
