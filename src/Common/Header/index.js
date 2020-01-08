@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 
 import { FaSearch } from 'react-icons/fa';
 
-import {HeaderContainer, Logo, SearchBar, SearchBarContainer, CartItems, UserName} from './styles';
+import {
+  HeaderContainer, 
+  Logo, SearchBar, 
+  SearchBarContainer, 
+  CartItems, 
+  UserName
+} from './styles';
 
 class Header extends Component {
+  handleRedirect = () => {
+    this.props.history.push('/')
+  }
+
+  handleCart = () => {
+    this.props.history.push('/cart')
+  }
+
   render() {
     return(
       <HeaderContainer>
-        <Logo>
+        <Logo onClick={this.handleRedirect}>
           reactshop
         </Logo>
         <SearchBarContainer>
@@ -19,12 +34,12 @@ class Header extends Component {
         />
         </SearchBarContainer>
         <div>
-        <CartItems>0</CartItems>
-        <UserName>
+        <CartItems onClick={this.handleCart}>0</CartItems>
+        <UserName >
           Usuário
         </UserName>
         </div>
       </HeaderContainer>
     )
   }
-} export default Header;
+} export default withRouter(Header);

@@ -16,6 +16,7 @@ export const Logo = styled.span`
   text-transform: uppercase;
   color: #222;
   font-size: 28px;
+  cursor: pointer;
 `
 
 export const SearchBarContainer = styled.div`
@@ -45,6 +46,7 @@ export const CartItems = styled.span`
   padding-bottom: 10px;
   color: #fafafa;
   font-size: 16px;
+  cursor: pointer;
 `
 
 export const UserName = styled.span`

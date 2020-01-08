@@ -7,8 +7,6 @@ import RootReducer from './Reducers/root';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import Routes from "./routes";
-import Header from './Common/Header';
-import Footer from './Common/Footer';
 
 function App() {
 
@@ -19,13 +17,11 @@ function App() {
 
   return (
     <React.Fragment>
-      <Header />
       <Provider store={ store }>
         <BrowserRouter>
           <Routes />
         </BrowserRouter>
       </Provider>
-      <Footer />
     </React.Fragment>
   );
 }

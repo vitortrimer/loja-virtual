@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 import { ItemContainer, ItemTitle, AvaliableButton, ItemPrice } from './styles';
+import { withRouter } from "react-router-dom";
 
-export default class ProductItem extends Component {
+class ProductItem extends Component {
 
   handleclick = () => {
-    console.log("click")
+    this.props.history.push('/show')
   }
   render() {
     return(
@@ -23,4 +24,4 @@ export default class ProductItem extends Component {
       </ItemContainer>
     )
   }
-}
+} export default withRouter(ProductItem);

@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
-export const ProductListContainer = styled.div`
-  display: flex;
-  justify-content: center;
+export const ProductListContainer = styled.ul`
+  text-align: center;
+  list-style: none;
   margin-bottom: 15px;
+`
+export const ProductListItemLi = styled.li`
+  display: inline-block;
 `
 
 export const ItemContainer = styled.div`
@@ -12,7 +15,7 @@ export const ItemContainer = styled.div`
   align-content: center;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding: 8px;
   margin:5px;
   transition: 0.2s ease-in-out;
   width: 250px;
@@ -46,6 +49,18 @@ export const AvaliableButton = styled.button`
   border-radius: 6px;
   border: none;
   cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #fafafa;
+  padding: 10px;
+  letter-spacing: 0.8px;
+`
+export const NotAvaliableButton = styled.button`
+  outline: none;
+  background-color: #c2c2c2;
+  border-radius: 6px;
+  border: none;
+  cursor: default;
   margin-top: 20px;
   font-size: 16px;
   color: #fafafa;

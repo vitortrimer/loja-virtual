@@ -1,0 +1,9 @@
+import React, { Component } from 'react';
+
+class Cart extends Component {
+  render() {
+    return(
+      <div>Welcome to cart!</div>
+    )
+  }
+} export default Cart
