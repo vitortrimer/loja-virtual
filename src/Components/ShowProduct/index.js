@@ -32,7 +32,13 @@ class ShowProduct extends Component {
   }
 
   componentDidMount() {
-    this.props.getProduct(this.props.match.params.id)
+    if(!_.isEmpty(this.props.product) && (this.props.match.params.id === this.props.product.id.toString())) {
+      this.setState({
+        product: this.props.product
+      })
+    } else {
+      this.props.getProduct(this.props.match.params.id)
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -80,6 +86,7 @@ class ShowProduct extends Component {
             <ProductDescription>
               {product.description}
             </ProductDescription>
+            <div>
             { product.isAvaliable ? 
               <ActionButton onClick={this.handleAddCartItem} >
                 <TiShoppingCart /> Adicionar ao Carrinho 
@@ -89,7 +96,10 @@ class ShowProduct extends Component {
                 Indisponível no momento
               </DisabledActionButton>
             }
-            {this.state.addedToCart && <AddedItem>Item adicionado ao carrinho</AddedItem>}
+            </div>
+            <div>
+              {this.state.addedToCart && <AddedItem>Item adicionado ao carrinho</AddedItem>}
+            </div>
           </ActionsContainer>
         </ProductImagePriceContainer>
       </ProductContainer>

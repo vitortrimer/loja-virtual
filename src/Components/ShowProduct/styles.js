@@ -11,7 +11,8 @@ export const ProductContainer = styled.div`
 export const ProductImagePriceContainer = styled.div`
   display: flex;
   justify-content: space-between;
-    margin-top: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   img {
     height: 350px;
     width: 350px;
