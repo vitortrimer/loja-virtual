@@ -56,6 +56,19 @@ export const ActionButton = styled.button`
   letter-spacing: 0.8px;
 `
 
+export const DisabledActionButton = styled.button`
+  outline: none;
+  background-color: #c2c2c2;
+  border-radius: 6px;
+  border: none;
+  cursor: default;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #fafafa;
+  padding: 10px;
+  letter-spacing: 0.8px;
+`
+
 export const ProductTitle = styled.div`
   font-size: 24px;
   width: 100%;
@@ -66,4 +79,10 @@ export const ProductTitle = styled.div`
   border-bottom: 1px dashed #444;
   letter-spacing: 0.3px;
   text-align: center;
+`
+
+export const AddedItem = styled.p`
+  margin-top: 4px;
+  margin-left: 4px;
+  color: green;
 `

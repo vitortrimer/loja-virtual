@@ -14,7 +14,7 @@ export default function Routes() {
       <Header />
       <Switch>
         <Route path="/" exact component={Products} />
-        <Route path="/show" component={ShowProduct} />
+        <Route path="/show/:id" component={ShowProduct} />
         <Route path="/cart" component={Cart} />
       </Switch>
       <Footer />

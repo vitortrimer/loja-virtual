@@ -1,26 +1,54 @@
 import React, { Component } from 'react';
 
-import { ItemContainer, ItemTitle, AvaliableButton, ItemPrice } from './styles';
+import { ItemContainer, ItemTitle, AvaliableButton, ItemPrice, NotAvaliableButton } from './styles';
 import { withRouter } from "react-router-dom";
 
 class ProductItem extends Component {
-
-  handleclick = () => {
-    this.props.history.push('/show')
+  state = {
+    product: {
+      id: 0,
+      description: "",
+      picturePath: "",
+      title: "",
+      price: "",
+      isAvaliable: false
+    }
   }
+  handleclick = () => {
+    this.props.history.push(`/show/${this.state.product.id}`)
+  }
+
+  componentDidMount() {
+    if(this.props.product) {
+      this.setState({
+        product: this.props.product
+      })
+    }
+  }
+
   render() {
+
+    const { product } = this.state;
+
     return(
       <ItemContainer onClick={this.handleclick}>
-        <img src="/assets/memoriaram.jpg" alt="Alterar alt"/>
+        <img src={product.picturePath} alt={product.title}/>
         <ItemTitle>
-          Memória Corsair Vengeance RGB Pro, 16GB (2x8GB)
+          {product.title}
         </ItemTitle>
         <ItemPrice>
-          R$: 430,32
+          R$: {product.price}
         </ItemPrice>
-        <AvaliableButton>
-          Disponível
-        </AvaliableButton>
+        { product.isAvaliable ?
+          <AvaliableButton>
+            Disponível
+          </AvaliableButton>
+          :
+          <NotAvaliableButton>
+            Indisponível
+          </NotAvaliableButton>
+        }
+        
       </ItemContainer>
     )
   }

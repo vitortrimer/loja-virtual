@@ -4,6 +4,8 @@ export const ProductListContainer = styled.ul`
   text-align: center;
   list-style: none;
   margin-bottom: 15px;
+  align-items: center;
+  align-content: center;
 `
 export const ProductListItemLi = styled.li`
   display: inline-block;
@@ -19,6 +21,7 @@ export const ItemContainer = styled.div`
   margin:5px;
   transition: 0.2s ease-in-out;
   width: 250px;
+  height: 450px;
   cursor: pointer;
   &:hover {
     background-color: #ededed;
@@ -60,7 +63,7 @@ export const NotAvaliableButton = styled.button`
   background-color: #c2c2c2;
   border-radius: 6px;
   border: none;
-  cursor: default;
+  cursor: pointer;
   margin-top: 20px;
   font-size: 16px;
   color: #fafafa;
