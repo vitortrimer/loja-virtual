@@ -61,7 +61,7 @@ class ShowProduct extends Component {
     
     if(!alreadyInCart) {
       this.props.setCartItem()
-      currentCart.push({id: this.state.product.id, quantity: 1})
+      currentCart.push({id: this.state.product.id, quantity: 1, price: this.state.product.price})
     } 
 
     localStorage.setItem('shoppingCartVT', JSON.stringify(currentCart))

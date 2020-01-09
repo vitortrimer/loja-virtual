@@ -12,67 +12,72 @@ import {
   QuantityInput,
   RemoveFromCartButton
 } from './styles';
-import {getProduct} from '../../Actions/products'
+import {getProduct, removeFromCart} from '../../Actions/products'
 
 class CartItem extends Component {
   state = {
     cartItem: {
       id: 0,
-      quantity: 0
+      quantity: 0,
+      price: 0,
     },
     product: {
-      id: 0,
+      id: null,
       description: "",
       picturePath: "",
       title: "",
       price: "",
       isAvaliable: false
     },
-    gotItem: false
   }
 
   componentDidMount() {
     this.setState({
       cartItem: this.props.cartItem
     })
-    this.props.getProduct(this.props.cartItem.id)
+
+    if(!_.isEmpty(this.props.product) && (this.props.product.id.toString() === this.props.cartItem.id.toString())) {
+      this.setState({
+        product: this.props.product,
+      })
+    } else {
+      this.props.getProduct(this.props.cartItem.id)
+    }
   }
 
   componentDidUpdate(prevProps) {
-    if(!_.isEqual(prevProps.product, this.props.product) && !this.state.gotItem) {
+    if(this.state.product.id === null && (this.props.product.id === this.props.cartItem.id)) {
       this.setState({
         product: this.props.product,
-        gotItem: true
+      })
+    }
+    if(!_.isEqual(this.props.cartItem, prevProps.cartItem)) {
+      this.setState({
+        cartItem: this.props.cartItem
       })
     }
   }
 
-  handleQuantity = (type) => {
-    let cartItem = this.state.cartItem
+  handleChange = event => {
     let cartItems = JSON.parse(localStorage.getItem("shoppingCartVT"))
-      cartItems.forEach((item, index) => {
-        if(item.id === cartItems.id) {
-          if(type === 'rm') {
-            if(cartItems[index].quantity > 0) {
-              cartItem.quantity = cartItems[index].quantity -= 1
-            }
-            else {
-              cartItems.splice(index, 1)
-            }
-          }
-          if(type === 'add') {
-            cartItem.quantity = cartItems[index].quantity += 1
-          }
-        }
-      })
-      this.setState({
-        cartItem
-      })
+    let cartItem = this.state.cartItem
+    const index = cartItems.findIndex(i => i.id.toString() === cartItem.id.toString());
+    if(event.target.value === "0") { 
+      cartItems.splice(index, 1)
+    } else {
+      cartItems[index].quantity = parseInt(event.target.value)
+    }
+    cartItem.quantity = event.target.value
+    localStorage.setItem("shoppingCartVT", JSON.stringify(cartItems))
+    this.setState({
+      cartItem
+    })
+    
   }
 
-  handleChange = event => {
+  handleQuantity = (type) => {
     let cartItem = this.state.cartItem
-    cartItem.quantity = event.target.value
+    this.props.handleQuantity(type, this.state.cartItem)
     this.setState({
       cartItem
     })
@@ -93,7 +98,7 @@ class CartItem extends Component {
             <RemoveItemButton onClick={() => this.handleQuantity('rm')}>-</RemoveItemButton>
           </div>
           <div>
-            <RemoveFromCartButton>
+            <RemoveFromCartButton onClick={() => this.props.handleRemoveItem(this.state.cartItem)}>
               Remover Item
             </RemoveFromCartButton>
           </div>
@@ -114,6 +119,9 @@ function mapDispatchToProps(dispatch) {
     getProduct: (id) => {
       dispatch(getProduct(id))
     },
+    removeFromCart: () => {
+      dispatch(removeFromCart())
+    }
   }
 }
 

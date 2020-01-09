@@ -60,6 +60,10 @@ export function setCartItem() {
   return { type: "SET_CART_ITEM" }
 }
 
+export function removeFromCart() {
+  return { type: "REMOVE_CART_ITEM" }
+}
+
 export function getCartLength() {
   return { type: "GET_CART_LENGTH" }
 }

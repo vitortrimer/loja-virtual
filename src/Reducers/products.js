@@ -24,6 +24,8 @@ export default (state=initialState, action) => {
       return Object.assign({}, state, { cartItems: cart, cartLength: cart.length });
     case "SET_CART_ITEM":
       return Object.assign({}, state, { cartLength: state.cartLength + 1 });
+    case "REMOVE_CART_ITEM":
+      return Object.assign({}, state, { cartLength: state.cartLength - 1 });
     default:
       return state
   }

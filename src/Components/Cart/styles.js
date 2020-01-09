@@ -87,3 +87,20 @@ export const RemoveFromCartButton = styled.button`
   }
   transition: 0.3s ease-in-out;
 `
+
+export const CartTotals = styled.div`
+  font-size: 16px;
+  display: flex;
+  justify-content: flex-end;
+  width: 500px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+`
+export const EmptyCart = styled.span`
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 24px;
+  cursor: default;
+`
